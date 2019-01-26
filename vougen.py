@@ -36,3 +36,20 @@ qr = qrcode.QRCode(
     box_size=2,
     border=4,
 )
+
+
+filename = 'users.rsc'
+wtofi = 1
+wtoru = 1
+if wtofi == 1:
+    for p in Path(".").glob("users.rsc"):
+        p.unlink()
+    with open(filename, 'w') as file_object:
+        file_object.write("/ip hotspot user\n")
+
+if wtoru == 1:
+        print("Connecting to Router...")
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        api = connect(username='lab', password='1234', host='192.168.25.244', ssl_wrapper=ctx.wrap_socket, port=8729)

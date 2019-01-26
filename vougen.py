@@ -28,3 +28,11 @@ def password_generator(size=9, chars=string.ascii_letters + string.digits):
     chars: default=A-Za-z0-9; override to provide more/less diversity
     """
     return ''.join(random.choice(chars) for i in range(size))
+
+
+qr = qrcode.QRCode(
+    version=1,
+    error_correction=qrcode.constants.ERROR_CORRECT_L,
+    box_size=2,
+    border=4,
+)

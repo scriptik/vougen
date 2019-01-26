@@ -13,3 +13,7 @@ from librouteros import connect
 import ssl
 import time
 import getpass
+
+
+pdfmetrics.registerFont(TTFont('DejaVuSans','DejaVuSans.ttf'))
+pdfmetrics.registerFont(TTFont('Arial','ariblk.ttf'))

@@ -40,7 +40,7 @@ qr = qrcode.QRCode(
 
 filename = 'users.rsc'
 wtofi = 1
-wtoru = 1
+wtoru = 0
 if wtofi == 1:
     for p in Path(".").glob("users.rsc"):
         p.unlink()

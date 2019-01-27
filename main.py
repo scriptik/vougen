@@ -9,6 +9,7 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
+import subprocess
 
 class vougen:
 
@@ -19,8 +20,10 @@ class vougen:
         master.geometry('660x400+250+100')
 
         #### Initialize Label Frames ####
-        self.labelvoucher = ttk.Label(master, text="Mikrotik Hotspot User & Voucher")
-        self.labelvoucher.grid(row= 0 , column= 0 , sticky=W, padx= 5, pady= 2)
+
+        self.header_LabelFrame = ttk.LabelFrame(master, height = 50, width = 640)
+        self.header_LabelFrame.grid(row= 0, column= 0 , columnspan=2, padx= 5, pady= 2)
+        self.header_LabelFrame.configure(borderwidth= 0)
 
         self.voucher_LabelFrame = ttk.LabelFrame(master, text="Voucher", height = 300, width = 320)
         self.voucher_LabelFrame.grid(row= 1, column= 0 , padx= 5, pady= 2)
@@ -31,6 +34,26 @@ class vougen:
         self.action_LabelFrame.configure(borderwidth= 2)
 
 
+        # Widget header Frame
+        self.labelvoucher = ttk.Label(self.header_LabelFrame, text="Mikrotik Hotspot User & Voucher                                ")
+        self.labelvoucher.grid(row= 0 , column= 0 , sticky='w', padx= (2,80), pady= 5)
+
+        self.btnAbout = Button(self.header_LabelFrame, text="About", command=self.BtnAbout)
+        self.btnQuit = Button(self.header_LabelFrame, text="Quit", command=self.BtnQuit)
+
+        self.btnAbout.grid(row="0", column="1",padx= (95,2), pady= 5, sticky='e')
+        self.btnQuit.grid(row="0", column="2",padx= 2, pady= 5, sticky='ew')
+
+        self.btnAbout.configure(width="5")
+        self.btnQuit.configure(width="5")
+
+        # Widget Voucher Frame
+
+
+    def BtnAbout(self):
+        pr_batch_set_password = subprocess.Popen([ 'python3', 'scripts/about.py' ])
+    def BtnQuit(self):
+        self.master.quit()
 
 
 def main():

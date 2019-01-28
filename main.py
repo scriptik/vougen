@@ -73,17 +73,27 @@ class vougen:
         self.entprefix.configure(width="12")
 
         self.labelhotnam = ttk.Label(self.voucher_LabelFrame, text="Name of hotspot :")
-        self.labelhotnam.grid(row= 3 , column= 0 , sticky='w', padx= (2,40), pady= (2,50))
+        self.labelhotnam.grid(row= 3 , column= 0 , sticky='w', padx= (2,40), pady= 2)
 
         self.enthotnam = ttk.Entry(self.voucher_LabelFrame)
-        self.enthotnam.grid(row= 3 , column= 1 , sticky='e', padx= 2, pady= (2,50))
+        self.enthotnam.grid(row= 3 , column= 1 , sticky='e', padx= 2, pady= 2)
         self.enthotnam.configure(width="12")
 
+        self.labelhotdns = ttk.Label(self.voucher_LabelFrame, text="hotspot DNS :")
+        self.labelhotdns.grid(row= 4 , column= 0 , sticky='w', padx= (2,40), pady= (2,25))
+
+        self.enthotdns = ttk.Entry(self.voucher_LabelFrame)
+        self.enthotdns.grid(row= 4 , column= 1 , sticky='e', padx= 2, pady= (2,25))
+        self.enthotdns.configure(width="12")
         # Widget Action Frame
-        self.cbwtfi = ttk.Checkbutton(self.action_LabelFrame, text="Save to file")
+        self.wtfi = IntVar()
+        self.cbwtfi = ttk.Checkbutton(self.action_LabelFrame, variable = self.wtfi,\
+                                     text="Save to file", onvalue = 1, offvalue = 0)
         self.cbwtfi.grid(row= 0 , column= 0 , sticky='w',padx= (2,160), pady= 2)
 
-        self.cbwtru = ttk.Checkbutton(self.action_LabelFrame, text="Write on Router")
+        self.wtru = IntVar()
+        self.cbwtru = ttk.Checkbutton(self.action_LabelFrame,variable = self.wtru,\
+                                     text="Write on Router", onvalue = 1, offvalue = 0)
         self.cbwtru.grid(row= 1 , column= 0 , sticky='w',padx= 2, pady= 2)
 
         self.labelrouuse = ttk.Label(self.action_LabelFrame, text="Router User name :")
@@ -91,28 +101,28 @@ class vougen:
 
         self.entrouuse = ttk.Entry(self.action_LabelFrame)
         self.entrouuse.grid(row= 2 , column= 1 , sticky='e', padx= 2, pady= 2)
-        self.entrouuse.configure(width="15")
+        self.entrouuse.configure(width="15", state='disabled')
 
         self.labelroupass = ttk.Label(self.action_LabelFrame, text="Router password :")
         self.labelroupass.grid(row= 3 , column= 0 , sticky='w', padx= 2, pady= 2)
 
         self.entroupass = ttk.Entry(self.action_LabelFrame)
         self.entroupass.grid(row= 3 , column= 1 , sticky='e', padx= 2, pady= 2)
-        self.entroupass.configure(width="15", show = '*')
+        self.entroupass.configure(width="15", show = '*', state='disabled')
 
         self.labelrouip = ttk.Label(self.action_LabelFrame, text="Router ip :")
         self.labelrouip.grid(row= 4 , column= 0 , sticky='w', padx= 2, pady= 2)
 
         self.entrouip = ttk.Entry(self.action_LabelFrame)
         self.entrouip.grid(row= 4 , column= 1 , sticky='e', padx= 2, pady= 2)
-        self.entrouip.configure(width="15")
+        self.entrouip.configure(width="15", state='disabled')
 
         self.labelroupo = ttk.Label(self.action_LabelFrame, text="Router ip :")
         self.labelroupo.grid(row= 5 , column= 0 , sticky='w', padx= 2, pady= 2)
 
         self.entroupo = ttk.Entry(self.action_LabelFrame)
         self.entroupo.grid(row= 5 , column= 1 , sticky='e', padx= 2, pady= 2)
-        self.entroupo.configure(width="5")
+        self.entroupo.configure(width="5", state='disabled')
 
 
     def BtnAbout(self):
@@ -120,6 +130,8 @@ class vougen:
         #print(self.cboxlenpass.get())
         #print(self.enthotnam.get())
         #print(self.entprefix.get())
+        #print(self.wtfi.get())
+        #print(self.wtru.get())
     def BtnQuit(self):
         self.master.quit()
 

@@ -164,8 +164,12 @@ class vougen:
         in06 = self.enthotdns.get()
         in07 = self.cboxplt.get()
         in08 = self.enthotnam.get()
+        in09 = self.entroupo.get()
+        in10 = self.entrouuse.get()
+        in11 = self.entroupass.get()
+        in12 = self.entrouip.get()
         #vou_gen(wtofi = in01, idnu = in03, prefix = in04, size = in05, dnsname = in06, plt = in07, hotnam = in08)
-        vou_gen(in01,in02,in03,in04,in05,in06,in07,in08)
+        vou_gen(in01,in02,in03,in04,in05,in06,in07,in08,in09,in10,in11,in12)
 
     def active_in(self):
         if self.wtru.get() == 1:

@@ -16,3 +16,10 @@ if the router is not avilable now you can save the out put in the .rsc file and 
 select Write on router checkbox.
 
 ![screenshot01](screenshot01.png)
+
+# Built with
+![librouteros](https://github.com/luqasz/librouteros)  Python implementation of MikroTik RouterOS API
+
+![python-qrcode](https://github.com/lincolnloop/python-qrcode)  Pure python QR Code generator
+
+![reportlab](https://github.com/Distrotech/reportlab) ReportLab PDF Toolkit

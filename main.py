@@ -34,6 +34,9 @@ class vougen:
         self.action_LabelFrame.grid(row= 1, column= 1 , padx= 5, pady= 2)
         self.action_LabelFrame.configure(borderwidth= 2)
 
+        self.footer_LabelFrame = ttk.LabelFrame(master, height = 50, width = 640)
+        self.footer_LabelFrame.grid(row= 2, column= 0 , columnspan=2, padx= 5)
+        self.footer_LabelFrame.configure(borderwidth= 0)
 
         # Widget header Frame
         self.labelheader = ttk.Label(self.header_LabelFrame, text="Mikrotik Hotspot User & Voucher")
@@ -135,11 +138,24 @@ class vougen:
         self.entroupo.grid(row= 5 , column= 1 , sticky='e', padx= 2, pady= 2)
         self.entroupo.configure(width="5", state='disabled')
 
+        # Widget footer Frame
+        #self.labelfooter = ttk.Label(self.footer_LabelFrame, text="Mikrotik Hotspot User & Voucher")
+        #self.labelfooter.grid(row= 0 , column= 0 , sticky='w', padx= (2,210), pady= 5)
+
+        self.btndoit = Button(self.footer_LabelFrame, text="Do it", command=self.Btndoit)
+        #self.btnQuit = Button(self.header_LabelFrame, text="Quit", command=self.BtnQuit)
+
+        #self.btndoit.grid(row="0", column="0",padx= (95,2), pady= 5, sticky='e')
+        self.btndoit.grid(row="0", column="0",padx= (2,190), sticky='e')
+        #self.btnQuit.grid(row="0", column="2",padx= 2, pady= 5, sticky='ew')
+
+        self.btndoit.configure(width="5")
+        #self.btnQuit.configure(width="5")
 
     def BtnAbout(self):
         pr_batch_set_password = subprocess.Popen([ 'python3', 'scripts/about.py' ])
-        #print(self.wtfi.get())
-        #print(self.wtru.get())
+
+    def Btndoit(self):
         in01 = self.wtfi.get()
         in02 = self.wtru.get()
         in03 = int(self.sboxusnu.get())

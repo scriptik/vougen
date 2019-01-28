@@ -35,8 +35,8 @@ class vougen:
 
 
         # Widget header Frame
-        self.labelvoucher = ttk.Label(self.header_LabelFrame, text="Mikrotik Hotspot User & Voucher                                ")
-        self.labelvoucher.grid(row= 0 , column= 0 , sticky='w', padx= (2,80), pady= 5)
+        self.labelheader = ttk.Label(self.header_LabelFrame, text="Mikrotik Hotspot User & Voucher")
+        self.labelheader.grid(row= 0 , column= 0 , sticky='w', padx= (2,210), pady= 5)
 
         self.btnAbout = Button(self.header_LabelFrame, text="About", command=self.BtnAbout)
         self.btnQuit = Button(self.header_LabelFrame, text="Quit", command=self.BtnQuit)
@@ -48,7 +48,25 @@ class vougen:
         self.btnQuit.configure(width="5")
 
         # Widget Voucher Frame
+        self.labellenpass = ttk.Label(self.voucher_LabelFrame, text="Password Length :")
+        self.labellenpass.grid(row= 0 , column= 0 , sticky='w', padx= 2, pady= 2)
 
+        self.lenpass = IntVar()
+        self.cboxlenpass = ttk.Combobox(self.voucher_LabelFrame, textvariable = self.lenpass)
+        self.cboxlenpass.set('8')
+        self.cboxlenpass.grid(row= 0 , column= 1 , sticky='e', padx= 2, pady= 2)
+        self.cboxlenpass.configure(width="4", values = ('8','9','10','11','12'))
+
+        self.labellenpass = ttk.Label(self.voucher_LabelFrame, text="Number of Users :")
+        self.labellenpass.grid(row= 1 , column= 0 , sticky='w', padx= 2, pady= 2)
+
+        self.usnu = IntVar()
+        self.sboxusnu = ttk.Spinbox(self.voucher_LabelFrame, from_ = 4, to = 400, increment = 4, textvariable = self.usnu)
+        self.sboxusnu.grid(row= 1 , column= 1 , sticky='e', padx= 2, pady= 2)
+        self.sboxusnu.configure(width="3")
+
+        self.labellenpass = ttk.Label(self.voucher_LabelFrame, text="User name prefix :")
+        self.labellenpass.grid(row= 2 , column= 0 , sticky='w', padx= (2,120), pady= (2,210))
 
     def BtnAbout(self):
         pr_batch_set_password = subprocess.Popen([ 'python3', 'scripts/about.py' ])

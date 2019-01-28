@@ -18,12 +18,12 @@ class vougen:
 
         self.master = master
         master.title("VOUGEN V1.0")
-        master.geometry('660x400+250+100')
+        master.geometry('660x310+250+100')
 
         #### Initialize Label Frames ####
 
         self.header_LabelFrame = ttk.LabelFrame(master, height = 50, width = 640)
-        self.header_LabelFrame.grid(row= 0, column= 0 , columnspan=2, padx= 5, pady= 2)
+        self.header_LabelFrame.grid(row= 0, column= 0 , columnspan=2, padx= 5, pady= (2,0))
         self.header_LabelFrame.configure(borderwidth= 0)
 
         self.voucher_LabelFrame = ttk.LabelFrame(master, text="Voucher", height = 300, width = 320)
@@ -39,14 +39,18 @@ class vougen:
         self.footer_LabelFrame.configure(borderwidth= 0)
 
         # Widget header Frame
-        self.labelheader = ttk.Label(self.header_LabelFrame, text="Mikrotik Hotspot User & Voucher")
-        self.labelheader.grid(row= 0 , column= 0 , sticky='w', padx= (2,210), pady= 5)
+        self.logo = PhotoImage(file = 'mikrotik_logo.gif')
+        self.logoheader = ttk.Label(self.header_LabelFrame,image = self.logo)
+        self.logoheader.grid(row= 0 , column= 0 , sticky='w', padx= (0,210), pady= (0,1))
+
+        self.labelheader = ttk.Label(self.header_LabelFrame, text="Hotspot User & Voucher generator")
+        self.labelheader.grid(row= 1 , column= 0 , sticky='w', padx= (0,200), pady= (0,1))
 
         self.btnAbout = Button(self.header_LabelFrame, text="About", command=self.BtnAbout)
         self.btnQuit = Button(self.header_LabelFrame, text="Quit", command=self.BtnQuit)
 
-        self.btnAbout.grid(row="0", column="1",padx= (95,2), pady= 5, sticky='e')
-        self.btnQuit.grid(row="0", column="2",padx= 2, pady= 5, sticky='ew')
+        self.btnAbout.grid(row="1", column="1",padx= (95,2), pady= (0,1), sticky='e')
+        self.btnQuit.grid(row="1", column="2",padx= 2, pady= (0,1) , sticky='ew')
 
         self.btnAbout.configure(width="5")
         self.btnQuit.configure(width="5")

@@ -135,7 +135,7 @@ class vougen:
         self.entrouip.grid(row= 4 , column= 1 , sticky='e', padx= 2, pady= 2)
         self.entrouip.configure(width="15", state='disabled')
 
-        self.labelroupo = ttk.Label(self.action_LabelFrame, text="Router ip :")
+        self.labelroupo = ttk.Label(self.action_LabelFrame, text="Router port :")
         self.labelroupo.grid(row= 5 , column= 0 , sticky='w', padx= 2, pady= 2)
 
         self.entroupo = ttk.Entry(self.action_LabelFrame)

@@ -72,16 +72,54 @@ class vougen:
         self.entprefix.grid(row= 2 , column= 1 , sticky='e', padx= 2, pady= 2)
         self.entprefix.configure(width="12")
 
-        self.labelsernam = ttk.Label(self.voucher_LabelFrame, text="Name of server :")
-        self.labelsernam.grid(row= 3 , column= 0 , sticky='w', padx= (2,40), pady= (2,180))
+        self.labelhotnam = ttk.Label(self.voucher_LabelFrame, text="Name of hotspot :")
+        self.labelhotnam.grid(row= 3 , column= 0 , sticky='w', padx= (2,40), pady= (2,50))
 
-        self.entsernam = ttk.Entry(self.voucher_LabelFrame)
-        self.entsernam.grid(row= 3 , column= 1 , sticky='e', padx= 2, pady= (2,180))
-        self.entsernam.configure(width="12")
+        self.enthotnam = ttk.Entry(self.voucher_LabelFrame)
+        self.enthotnam.grid(row= 3 , column= 1 , sticky='e', padx= 2, pady= (2,50))
+        self.enthotnam.configure(width="12")
+
+        # Widget Action Frame
+        self.cbwtfi = ttk.Checkbutton(self.action_LabelFrame, text="Save to file")
+        self.cbwtfi.grid(row= 0 , column= 0 , sticky='w',padx= (2,160), pady= 2)
+
+        self.cbwtru = ttk.Checkbutton(self.action_LabelFrame, text="Write on Router")
+        self.cbwtru.grid(row= 1 , column= 0 , sticky='w',padx= 2, pady= 2)
+
+        self.labelrouuse = ttk.Label(self.action_LabelFrame, text="Router User name :")
+        self.labelrouuse.grid(row= 2 , column= 0 , sticky='w', padx= 2, pady= 2)
+
+        self.entrouuse = ttk.Entry(self.action_LabelFrame)
+        self.entrouuse.grid(row= 2 , column= 1 , sticky='e', padx= 2, pady= 2)
+        self.entrouuse.configure(width="15")
+
+        self.labelroupass = ttk.Label(self.action_LabelFrame, text="Router password :")
+        self.labelroupass.grid(row= 3 , column= 0 , sticky='w', padx= 2, pady= 2)
+
+        self.entroupass = ttk.Entry(self.action_LabelFrame)
+        self.entroupass.grid(row= 3 , column= 1 , sticky='e', padx= 2, pady= 2)
+        self.entroupass.configure(width="15", show = '*')
+
+        self.labelrouip = ttk.Label(self.action_LabelFrame, text="Router ip :")
+        self.labelrouip.grid(row= 4 , column= 0 , sticky='w', padx= 2, pady= 2)
+
+        self.entrouip = ttk.Entry(self.action_LabelFrame)
+        self.entrouip.grid(row= 4 , column= 1 , sticky='e', padx= 2, pady= 2)
+        self.entrouip.configure(width="15")
+
+        self.labelroupo = ttk.Label(self.action_LabelFrame, text="Router ip :")
+        self.labelroupo.grid(row= 5 , column= 0 , sticky='w', padx= 2, pady= 2)
+
+        self.entroupo = ttk.Entry(self.action_LabelFrame)
+        self.entroupo.grid(row= 5 , column= 1 , sticky='e', padx= 2, pady= 2)
+        self.entroupo.configure(width="5")
+
 
     def BtnAbout(self):
         pr_batch_set_password = subprocess.Popen([ 'python3', 'scripts/about.py' ])
         #print(self.cboxlenpass.get())
+        #print(self.enthotnam.get())
+        #print(self.entprefix.get())
     def BtnQuit(self):
         self.master.quit()
 

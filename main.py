@@ -66,10 +66,17 @@ class vougen:
         self.sboxusnu.configure(width="3")
 
         self.labellenpass = ttk.Label(self.voucher_LabelFrame, text="User name prefix :")
-        self.labellenpass.grid(row= 2 , column= 0 , sticky='w', padx= (2,120), pady= (2,210))
+        #self.labellenpass.grid(row= 2 , column= 0 , sticky='w', padx= (2,120), pady= (2,210))
+        self.labellenpass.grid(row= 2 , column= 0 , sticky='w', padx= (2,40), pady= (2,210))
+
+        self.entprefix = ttk.Entry(self.voucher_LabelFrame)
+        self.entprefix.grid(row= 2 , column= 1 , sticky='e', padx= 2, pady= (2,210))
+        self.entprefix.configure(width="12")
+
 
     def BtnAbout(self):
         pr_batch_set_password = subprocess.Popen([ 'python3', 'scripts/about.py' ])
+        #print(self.cboxlenpass.get())
     def BtnQuit(self):
         self.master.quit()
 

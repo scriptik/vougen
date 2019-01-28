@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
@@ -13,7 +15,6 @@ import getpass
 
 
 
-
 def password_generator(size=9, chars=string.ascii_letters + string.digits):
     """
     Returns a string of random characters, useful in generating temporary
@@ -25,10 +26,10 @@ def password_generator(size=9, chars=string.ascii_letters + string.digits):
     return ''.join(random.choice(chars) for i in range(size))
 
 
-def vou_gen(wtofi = 1,wtoru = 0,idnu = 12,prefix = "baradstore", dnsname = "barad.store"):
+def vou_gen(wtofi = 1,wtoru = 0,idnu = 24,prefix = "baradstore", dnsname = "barad.store"):
+
     pdfmetrics.registerFont(TTFont('DejaVuSans','DejaVuSans.ttf'))
     pdfmetrics.registerFont(TTFont('Arial','ariblk.ttf'))
-
 
     qr = qrcode.QRCode(
         version=1,
@@ -37,6 +38,7 @@ def vou_gen(wtofi = 1,wtoru = 0,idnu = 12,prefix = "baradstore", dnsname = "bara
         border=4,
     )
 
+    ############################################
 
     filename = 'users.rsc'
     if wtofi == 1:
@@ -54,6 +56,7 @@ def vou_gen(wtofi = 1,wtoru = 0,idnu = 12,prefix = "baradstore", dnsname = "bara
 
     limit_time = "1d"
     userdic = {}
+    dnsname = "barad.store"
     for i in range(idnu):
         user = prefix+str(i)
         passwd = (password_generator())
@@ -85,15 +88,15 @@ def vou_gen(wtofi = 1,wtoru = 0,idnu = 12,prefix = "baradstore", dnsname = "bara
     pnu = int(idnu/4)
     minra = 0
     maxra = 4
-    canvas = canvas.Canvas("vouchers.pdf")
+    c = canvas.Canvas("vouchers.pdf")
     for p in range(pnu):
-        canvas.setLineWidth(.1)
-        canvas.setFont('Helvetica', 12)
+        c.setLineWidth(.1)
+        c.setFont('Helvetica', 12)
 
-        canvas.drawInlineImage(ptemp, 20,0, width=240,height=300)
-        canvas.drawInlineImage(ptemp, 320,0, width=240,height=300)
-        canvas.drawInlineImage(ptemp, 20,400, width=240,height=300)
-        canvas.drawInlineImage(ptemp, 320,400, width=240,height=300)
+        c.drawInlineImage(ptemp, 20,0, width=240,height=300)
+        c.drawInlineImage(ptemp, 320,0, width=240,height=300)
+        c.drawInlineImage(ptemp, 20,400, width=240,height=300)
+        c.drawInlineImage(ptemp, 320,400, width=240,height=300)
 
 
 
@@ -104,7 +107,7 @@ def vou_gen(wtofi = 1,wtoru = 0,idnu = 12,prefix = "baradstore", dnsname = "bara
         xps ={0:38,1:338,2:38,3:338}
         yps ={0:515,1:515,2:115,3:115}
 
-        canvas.setFont("Arial", 13)
+        c.setFont("Arial", 13)
         i = 0
         for j in range(minra,maxra):
             qrimage = prefix+str(j)+".png"
@@ -116,22 +119,23 @@ def vou_gen(wtofi = 1,wtoru = 0,idnu = 12,prefix = "baradstore", dnsname = "bara
             yusi = (yus[i])
             xpsi = (xps[i])
             ypsi = (yps[i])
-            canvas.drawInlineImage(qrimage, xqri,yqri, width=None,height=None)
-            canvas.drawString(xusi,yusi, userq)
-            canvas.drawString(xpsi,ypsi, passq)
+            c.drawInlineImage(qrimage, xqri,yqri, width=None,height=None)
+            c.drawString(xusi,yusi, userq)
+            c.drawString(xpsi,ypsi, passq)
             i += 1
-            minra += 4
-            maxra += 4
-            canvas.setFont("Arial", 10)
-            canvas.drawString(37,605, profile)
-            canvas.drawString(337,605, profile)
-            canvas.drawString(37,205, profile)
-            canvas.drawString(337,205, profile)
-            canvas.showPage()
-    canvas.save()
+        minra += 4
+        maxra += 4
+        c.setFont("Arial", 10)
+        c.drawString(37,605, profile)
+        c.drawString(337,605, profile)
+        c.drawString(37,205, profile)
+        c.drawString(337,205, profile)
+        c.showPage()
+    c.save()
+    del_temp(prefix)
 
-
-    for p in Path(".").glob(user+"*.png"):
+def del_temp(prefix):
+    for p in Path(".").glob(prefix+"*.png"):
         p.unlink()
     print("QR temp files Removed!")
 

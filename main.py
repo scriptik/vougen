@@ -153,7 +153,7 @@ class vougen:
         #self.btnQuit.configure(width="5")
 
     def BtnAbout(self):
-        pr_batch_set_password = subprocess.Popen([ 'python3', 'scripts/about.py' ])
+        pr_batch_set_password = subprocess.Popen([ 'python3', 'about.py' ])
 
     def Btndoit(self):
         in01 = self.wtfi.get()

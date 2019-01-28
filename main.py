@@ -10,6 +10,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 import subprocess
+from vougen import vou_gen
 
 class vougen:
 
@@ -137,11 +138,15 @@ class vougen:
 
     def BtnAbout(self):
         pr_batch_set_password = subprocess.Popen([ 'python3', 'scripts/about.py' ])
-        #print(self.cboxlenpass.get())
-        #print(self.enthotnam.get())
-        #print(self.entprefix.get())
         #print(self.wtfi.get())
         #print(self.wtru.get())
+        in01 = self.wtfi.get()
+        in03 = int(self.sboxusnu.get())
+        in06 = self.enthotdns.get()
+        in04 = self.entprefix.get()
+        in05 = int(self.cboxlenpass.get())
+        in07 = self.cboxplt.get()
+        vou_gen(wtofi = in01, idnu = in03, prefix = in04, size = in05, dnsname = in06, plt = in07)
     def BtnQuit(self):
         self.master.quit()
 

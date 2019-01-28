@@ -15,7 +15,7 @@ import getpass
 
 
 
-def password_generator(size=9, chars=string.ascii_letters + string.digits):
+def password_generator(size=8, chars=string.ascii_letters + string.digits):
     """
     Returns a string of random characters, useful in generating temporary
     passwords for automated password resets.
@@ -26,7 +26,7 @@ def password_generator(size=9, chars=string.ascii_letters + string.digits):
     return ''.join(random.choice(chars) for i in range(size))
 
 
-def vou_gen(wtofi = 0,wtoru = 0,idnu = 40,prefix = "barst", dnsname = "barad.store"):
+def vou_gen(wtofi = 0,wtoru = 0,idnu = 40,prefix = "barst", size = 8, dnsname = "barad.store", plt = 1):
 
     pdfmetrics.registerFont(TTFont('DejaVuSans','DejaVuSans.ttf'))
     pdfmetrics.registerFont(TTFont('Arial','ariblk.ttf'))
@@ -56,10 +56,9 @@ def vou_gen(wtofi = 0,wtoru = 0,idnu = 40,prefix = "barst", dnsname = "barad.sto
 
     limit_time = "1d"
     userdic = {}
-    dnsname = "barad.store"
     for i in range(idnu):
         user = prefix+str(i)
-        passwd = (password_generator())
+        passwd = (password_generator(size))
         userdic.update({user : passwd})
         roucomm = ("add limit-uptime="+limit_time+" name="+user+" password="+passwd+" server=hotspot1")
         print(roucomm)
@@ -84,7 +83,7 @@ def vou_gen(wtofi = 0,wtoru = 0,idnu = 40,prefix = "barst", dnsname = "barad.sto
 
     ## Create the print temp
     ptemp = "printtemp.jpg"
-    profile =  "1 DAY Access"
+    profile = plt+" DAY Access"
     pnu = int(idnu/4)
     minra = 0
     maxra = 4
@@ -138,5 +137,3 @@ def del_temp(prefix):
     for p in Path(".").glob(prefix+"*.png"):
         p.unlink()
     print("QR temp files Removed!")
-
-vou_gen()

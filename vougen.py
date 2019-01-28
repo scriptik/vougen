@@ -54,7 +54,7 @@ def vou_gen(wtofi = 0,wtoru = 0,idnu = 40,prefix = "barst", size = 8, \
             #api = connect(username='lab', password='1234', host='192.168.25.244', ssl_wrapper=ctx.wrap_socket, port=8729)
             api = connect(username=ru_us, password=ru_pa, host=ru_ip, ssl_wrapper=ctx.wrap_socket, port=ru_po)
 
-    limit_time = "1d"
+    limit_time = plt+"d"
     userdic = {}
     for i in range(idnu):
         user = prefix+str(i)

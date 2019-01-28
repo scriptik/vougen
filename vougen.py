@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
@@ -26,7 +24,8 @@ def password_generator(size=8, chars=string.ascii_letters + string.digits):
     return ''.join(random.choice(chars) for i in range(size))
 
 
-def vou_gen(wtofi = 0,wtoru = 0,idnu = 40,prefix = "barst", size = 8, dnsname = "barad.store", plt = 1):
+def vou_gen(wtofi = 0,wtoru = 0,idnu = 40,prefix = "barst", size = 8, \
+            dnsname = "barad.store", plt = 1, hotnam = "hotspot1",ru_po = 8729, ru_us= 1, ru_pa= 1, ru_ip=1):
 
     pdfmetrics.registerFont(TTFont('DejaVuSans','DejaVuSans.ttf'))
     pdfmetrics.registerFont(TTFont('Arial','ariblk.ttf'))
@@ -52,7 +51,8 @@ def vou_gen(wtofi = 0,wtoru = 0,idnu = 40,prefix = "barst", size = 8, dnsname = 
             ctx = ssl.create_default_context()
             ctx.check_hostname = False
             ctx.verify_mode = ssl.CERT_NONE
-            api = connect(username='lab', password='1234', host='192.168.25.244', ssl_wrapper=ctx.wrap_socket, port=8729)
+            #api = connect(username='lab', password='1234', host='192.168.25.244', ssl_wrapper=ctx.wrap_socket, port=8729)
+            api = connect(username=ru_us, password=ru_pa, host=ru_ip, ssl_wrapper=ctx.wrap_socket, port=ru_po)
 
     limit_time = "1d"
     userdic = {}
@@ -60,7 +60,7 @@ def vou_gen(wtofi = 0,wtoru = 0,idnu = 40,prefix = "barst", size = 8, dnsname = 
         user = prefix+str(i)
         passwd = (password_generator(size))
         userdic.update({user : passwd})
-        roucomm = ("add limit-uptime="+limit_time+" name="+user+" password="+passwd+" server=hotspot1")
+        roucomm = ("add limit-uptime="+limit_time+" name="+user+" password="+passwd+" server="+hotnam)
         print(roucomm)
         if wtofi == 1:
             with open(filename, 'a') as file_object:

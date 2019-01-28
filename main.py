@@ -104,7 +104,7 @@ class vougen:
 
         self.wtru = IntVar()
         self.cbwtru = ttk.Checkbutton(self.action_LabelFrame,variable = self.wtru,\
-                                     text="Write on Router", onvalue = 1, offvalue = 0)
+                                     text="Write on Router", onvalue = 1, offvalue = 0, command=self.active_in)
         self.cbwtru.grid(row= 1 , column= 0 , sticky='w',padx= 2, pady= 2)
 
         self.labelrouuse = ttk.Label(self.action_LabelFrame, text="Router User name :")
@@ -141,15 +141,31 @@ class vougen:
         #print(self.wtfi.get())
         #print(self.wtru.get())
         in01 = self.wtfi.get()
+        in02 = self.wtru.get()
         in03 = int(self.sboxusnu.get())
-        in06 = self.enthotdns.get()
         in04 = self.entprefix.get()
         in05 = int(self.cboxlenpass.get())
+        in06 = self.enthotdns.get()
         in07 = self.cboxplt.get()
-        vou_gen(wtofi = in01, idnu = in03, prefix = in04, size = in05, dnsname = in06, plt = in07)
+        in08 = self.enthotnam.get()
+        #vou_gen(wtofi = in01, idnu = in03, prefix = in04, size = in05, dnsname = in06, plt = in07, hotnam = in08)
+        vou_gen(in01,in02,in03,in04,in05,in06,in07,in08)
+
+    def active_in(self):
+        if self.wtru.get() == 1:
+           self.entrouuse.configure(state='enable')
+           self.entroupass.configure(state='enable')
+           self.entrouip.configure(state='enable')
+           self.entroupo.configure(state='enable')
+        else:
+           self.entrouuse.configure(state='disable')
+           self.entroupass.configure(state='disable')
+           self.entrouip.configure(state='disable')
+           self.entroupo.configure(state='disable')
+
+
     def BtnQuit(self):
         self.master.quit()
-
 
 def main():
 

@@ -80,11 +80,21 @@ class vougen:
         self.enthotnam.configure(width="12")
 
         self.labelhotdns = ttk.Label(self.voucher_LabelFrame, text="hotspot DNS :")
-        self.labelhotdns.grid(row= 4 , column= 0 , sticky='w', padx= (2,40), pady= (2,25))
+        self.labelhotdns.grid(row= 4 , column= 0 , sticky='w', padx= (2,40), pady= 2)
 
         self.enthotdns = ttk.Entry(self.voucher_LabelFrame)
-        self.enthotdns.grid(row= 4 , column= 1 , sticky='e', padx= 2, pady= (2,25))
+        self.enthotdns.grid(row= 4 , column= 1 , sticky='e', padx= 2, pady= 2)
         self.enthotdns.configure(width="12")
+
+        self.labelplt = ttk.Label(self.voucher_LabelFrame, text="Profile limit time Day(s) :")
+        self.labelplt.grid(row= 5 , column= 0 , sticky='w', padx= 2, pady= 2)
+
+        self.plt = IntVar()
+        self.cboxplt = ttk.Combobox(self.voucher_LabelFrame, textvariable = self.plt)
+        self.cboxplt.set('1')
+        self.cboxplt.grid(row= 5 , column= 1 , sticky='e', padx= 2, pady= 2)
+        self.cboxplt.configure(width="4", values = ('1','7','30','60','90', '180', '365'))
+
         # Widget Action Frame
         self.wtfi = IntVar()
         self.cbwtfi = ttk.Checkbutton(self.action_LabelFrame, variable = self.wtfi,\

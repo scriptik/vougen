@@ -26,7 +26,7 @@ def password_generator(size=9, chars=string.ascii_letters + string.digits):
     return ''.join(random.choice(chars) for i in range(size))
 
 
-def vou_gen(wtofi = 1,wtoru = 0,idnu = 24,prefix = "baradstore", dnsname = "barad.store"):
+def vou_gen(wtofi = 0,wtoru = 0,idnu = 40,prefix = "barst", dnsname = "barad.store"):
 
     pdfmetrics.registerFont(TTFont('DejaVuSans','DejaVuSans.ttf'))
     pdfmetrics.registerFont(TTFont('Arial','ariblk.ttf'))

@@ -12,8 +12,6 @@ import time
 import getpass
 
 
-pdfmetrics.registerFont(TTFont('DejaVuSans','DejaVuSans.ttf'))
-pdfmetrics.registerFont(TTFont('Arial','ariblk.ttf'))
 
 
 def password_generator(size=9, chars=string.ascii_letters + string.digits):
@@ -28,6 +26,10 @@ def password_generator(size=9, chars=string.ascii_letters + string.digits):
 
 
 def vou_gen(wtofi = 1,wtoru = 0,idnu = 12,prefix = "baradstore", dnsname = "barad.store"):
+    pdfmetrics.registerFont(TTFont('DejaVuSans','DejaVuSans.ttf'))
+    pdfmetrics.registerFont(TTFont('Arial','ariblk.ttf'))
+
+
     qr = qrcode.QRCode(
         version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_L,
@@ -118,14 +120,14 @@ def vou_gen(wtofi = 1,wtoru = 0,idnu = 12,prefix = "baradstore", dnsname = "bara
             canvas.drawString(xusi,yusi, userq)
             canvas.drawString(xpsi,ypsi, passq)
             i += 1
-        minra += 4
-        maxra += 4
-        canvas.setFont("Arial", 10)
-        canvas.drawString(37,605, profile)
-        canvas.drawString(337,605, profile)
-        canvas.drawString(37,205, profile)
-        canvas.drawString(337,205, profile)
-        canvas.showPage()
+            minra += 4
+            maxra += 4
+            canvas.setFont("Arial", 10)
+            canvas.drawString(37,605, profile)
+            canvas.drawString(337,605, profile)
+            canvas.drawString(37,205, profile)
+            canvas.drawString(337,205, profile)
+            canvas.showPage()
     canvas.save()
 
 

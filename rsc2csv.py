@@ -33,4 +33,3 @@ for i in range (5,lni,5):
     with open(file_ou, 'a') as file_out:
          file_out.write(instr+"\n")
 
-print("user.csv file created!")

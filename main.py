@@ -31,7 +31,7 @@ class vougen:
 
         self.master = master
         master.title("VOUGEN V1.0")
-        master.geometry('660x470+250+100')
+        master.geometry('660x450+250+100')
 
         #### Initialize Label Frames ####
 
@@ -166,21 +166,20 @@ class vougen:
         self.btnQuit.grid(row="0", column="1",padx= (2,2), sticky='se')
         self.btnQuit.configure(width="5", height =3)
 
-        self.info = ttk.Label(self.footer_LabelFrame, text="Hotspot User & Voucher generator")
-        self.info.grid(row= 1 , column= 0 , pady=(5,0), sticky='w')
+        #self.info = ttk.Label(self.footer_LabelFrame, text="Hotspot User & Voucher generator")
+        #self.info.grid(row= 1 , column= 0 , pady=(5,0), sticky='w')
 
     def BtnAbout(self):
         pr_about = subprocess.Popen([ 'python3', 'about.py' ])
 
     def Btndoit(self):
+        self.textout.delete('1.0', END)
         self.vou_gen()
-        #self.textout.insert(END, vou_gen.roucomm)
         if self.wtfi.get() == 1:
-           print("user.rsc file created!")
-           s= "user.rsc file created!"
+           pr_csv = subprocess.Popen([ 'python3', 'rsc2csv.py' ])
+           s= "user.rsc file created!\nuser.csv file created!"
            self.textout.insert(END, s)
            self.textout.see(END)
-           pr_csv = subprocess.Popen([ 'python3', 'rsc2csv.py' ])
 
     def active_in(self):
         if self.wtru.get() == 1:
@@ -244,7 +243,6 @@ class vougen:
 
         limit_time = plt+"d"
         userdic = {}
-        self.textout.delete('1.0', END)
         for i in range(idnu):
             user = prefix+str(i)
             #passwd = (self.password_generator(size))
@@ -263,7 +261,6 @@ class vougen:
                 api(cmd='/ip/hotspot/user/add', **parms)
 
 
-            self.info.config(text = "Waiting ......")
             qr.clear()
             qr.add_data('http://'+dnsname+'/login?username='+user+'&password='+passwd)
             qr.make(fit=True)
@@ -331,7 +328,8 @@ class vougen:
         for p in Path(".").glob(prefix+"*.png"):
             p.unlink()
         #print("QR temp files Removed!")
-        self.info.config(text = "QR temp files Removed!")
+
+
 def main():
 
     root = Tk()

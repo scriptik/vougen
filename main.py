@@ -31,7 +31,7 @@ class vougen:
 
         self.master = master
         master.title("VOUGEN V1.0")
-        master.geometry('660x410+250+100')
+        master.geometry('660x510+250+100')
 
         #### Initialize Label Frames ####
 
@@ -163,12 +163,15 @@ class vougen:
         #self.btnQuit = Button(self.header_LabelFrame, text="Quit", command=self.BtnQuit)
 
         #self.btndoit.grid(row="0", column="0",padx= (95,2), pady= 5, sticky='e')
-        self.btndoit.grid(row="0", column="0",padx= (2,190), sticky='e')
+        #self.btndoit.grid(row="0", column="0",padx= (2,190), sticky='e')
+        self.btndoit.grid(row="0", column="1",padx= (2,2), sticky='ne')
         #self.btnQuit.grid(row="0", column="2",padx= 2, pady= 5, sticky='ew')
 
         self.btndoit.configure(width="5")
         #self.btnQuit.configure(width="5")
 
+        self.textout = Text(self.footer_LabelFrame, width = 82 , height =12)
+        self.textout.grid(row="0", column="0",padx= (1,0), pady = 1)
 
     def BtnAbout(self):
         pr_about = subprocess.Popen([ 'python3', 'about.py' ])
@@ -178,6 +181,9 @@ class vougen:
         #self.textout.insert(END, vou_gen.roucomm)
         if self.wtfi.get() == 1:
            print("user.rsc file created!")
+           s= "user.rsc file created!"
+           self.textout.insert(END, s)
+           self.textout.see(END)
            pr_csv = subprocess.Popen([ 'python3', 'rsc2csv.py' ])
 
     def active_in(self):
@@ -196,10 +202,6 @@ class vougen:
     def BtnQuit(self):
         self.master.quit()
 
-    def callback(id, tex):
-        s = 'At {} f is {}\n'.format(id, id**id/0.987)
-        tex.insert(tk.END, s)
-        tex.see(tk.END)             # Scroll if necessary
 
     def vou_gen(self):
 
@@ -253,6 +255,9 @@ class vougen:
             userdic.update({user : passwd})
             roucomm = ("add limit-uptime="+limit_time+" name="+user+" password="+passwd+" server="+hotnam)
             print(roucomm)
+            s = '{}\n'.format(roucomm)
+            self.textout.insert(END, s)
+            self.textout.see(END)
             if wtofi == 1:
                 with open(filename, 'a') as file_object:
                     file_object.write(roucomm+"\n")

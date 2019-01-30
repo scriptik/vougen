@@ -138,12 +138,14 @@ class vougen:
 
         self.entrouip = ttk.Entry(self.action_LabelFrame)
         self.entrouip.grid(row= 4 , column= 1 , sticky='e', padx= 2, pady= 2)
+        self.entrouip.insert(END, '192.168.')
         self.entrouip.configure(width="15", state='disabled')
 
         self.labelroupo = ttk.Label(self.action_LabelFrame, text="Router port :")
         self.labelroupo.grid(row= 5 , column= 0 , sticky='w', padx= 2, pady= 2)
 
         self.entroupo = ttk.Entry(self.action_LabelFrame)
+        self.entroupo.insert(END, '8729')
         self.entroupo.grid(row= 5 , column= 1 , sticky='e', padx= 2, pady= 2)
         self.entroupo.configure(width="5", state='disabled')
 
@@ -261,6 +263,7 @@ class vougen:
                 api(cmd='/ip/hotspot/user/add', **parms)
 
 
+            self.info.config(text = "Waiting ......")
             qr.clear()
             qr.add_data('http://'+dnsname+'/login?username='+user+'&password='+passwd)
             qr.make(fit=True)
@@ -270,8 +273,7 @@ class vougen:
             img.save(user+".png")
 
 
-        print("Waiting ......")
-
+        #print("Waiting ......")
         ## Create the print temp
         ptemp = "printtemp.jpg"
         profile = plt+" DAY Access"
@@ -324,11 +326,12 @@ class vougen:
         c.save()
         self.del_temp(prefix)
 
+
     def del_temp(self, prefix):
         for p in Path(".").glob(prefix+"*.png"):
             p.unlink()
-        print("QR temp files Removed!")
-
+        #print("QR temp files Removed!")
+        self.info.config(text = "QR temp files Removed!")
 def main():
 
     root = Tk()

@@ -31,7 +31,7 @@ class vougen:
 
         self.master = master
         master.title("VOUGEN V1.0")
-        master.geometry('660x510+250+100')
+        master.geometry('660x470+250+100')
 
         #### Initialize Label Frames ####
 
@@ -149,22 +149,23 @@ class vougen:
 
         # Widget footer Frame
 
-        self.btndoit = Button(self.footer_LabelFrame, text="Do it", command=self.Btndoit)
-        self.btndoit.grid(row="0", column="1",padx= (2,2), sticky='ne')
-        self.btndoit.configure(width="5", height =5)
-
         self.textout = Text(self.footer_LabelFrame, width = 82 , height =12)
         self.textout.grid(row="0", column="0",padx= (1,0), pady = 1)
 
+        self.btndoit = Button(self.footer_LabelFrame, text="Do it", command=self.Btndoit)
+        self.btndoit.grid(row="0", column="1",padx= (2,2), sticky='ne')
+        self.btndoit.configure(width="5", height =3)
+
         self.btnAbout = Button(self.footer_LabelFrame, text="About", command=self.BtnAbout)
+        self.btnAbout.grid(row="0", column="1",padx= (2,2), sticky='e')
+        self.btnAbout.configure(width="5", height =3)
+
         self.btnQuit = Button(self.footer_LabelFrame, text="Quit", command=self.BtnQuit)
-
-        self.btnAbout.grid(row="0", column="1",padx= (2,2), pady=15, sticky='e')
         self.btnQuit.grid(row="0", column="1",padx= (2,2), sticky='se')
+        self.btnQuit.configure(width="5", height =3)
 
-        self.btnAbout.configure(width="5")
-        self.btnQuit.configure(width="5")
-
+        self.info = ttk.Label(self.footer_LabelFrame, text="Hotspot User & Voucher generator")
+        self.info.grid(row= 1 , column= 0 , pady=(5,0), sticky='w')
 
     def BtnAbout(self):
         pr_about = subprocess.Popen([ 'python3', 'about.py' ])

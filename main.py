@@ -30,7 +30,7 @@ class vougen:
     def __init__(self, master):
 
         self.master = master
-        master.title("VOUGEN V1.0")
+        master.title("VOUGEN V1.2")
         master.geometry('660x450+250+100')
 
         #### Initialize Label Frames ####

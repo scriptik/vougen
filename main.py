@@ -36,7 +36,7 @@ class vougen:
         #### Initialize Label Frames ####
 
         self.header_LabelFrame = ttk.LabelFrame(master, height = 50, width = 640)
-        self.header_LabelFrame.grid(row= 0, column= 0 , columnspan=2, padx= 5, pady= (2,0))
+        self.header_LabelFrame.grid(row= 0, column= 0 , columnspan=2, padx= 5, pady= (2,5))
         self.header_LabelFrame.configure(borderwidth= 0)
 
         self.voucher_LabelFrame = ttk.LabelFrame(master, text="Voucher", height = 300, width = 320)
@@ -54,19 +54,11 @@ class vougen:
         # Widget header Frame
         self.logo = PhotoImage(file = 'mikrotik_logo.gif')
         self.logoheader = ttk.Label(self.header_LabelFrame,image = self.logo)
-        self.logoheader.grid(row= 0 , column= 0 , sticky='w', padx= (0,210), pady= (0,1))
+        self.logoheader.grid(row= 0 , column= 0 , sticky='w',padx= (0,180), pady= (0,1))
 
         self.labelheader = ttk.Label(self.header_LabelFrame, text="Hotspot User & Voucher generator")
-        self.labelheader.grid(row= 1 , column= 0 , sticky='w', padx= (0,200), pady= (0,1))
-
-        self.btnAbout = Button(self.header_LabelFrame, text="About", command=self.BtnAbout)
-        self.btnQuit = Button(self.header_LabelFrame, text="Quit", command=self.BtnQuit)
-
-        self.btnAbout.grid(row="1", column="1",padx= (95,2), pady= (0,1), sticky='e')
-        self.btnQuit.grid(row="1", column="2",padx= 2, pady= (0,1) , sticky='ew')
-
-        self.btnAbout.configure(width="5")
-        self.btnQuit.configure(width="5")
+        self.labelheader.config(font=("Arial Black", 11))
+        self.labelheader.grid(row= 0 , column= 1 , sticky='e')
 
         # Widget Voucher Frame
         self.labellenpass = ttk.Label(self.voucher_LabelFrame, text="Password Length :")
@@ -159,10 +151,20 @@ class vougen:
 
         self.btndoit = Button(self.footer_LabelFrame, text="Do it", command=self.Btndoit)
         self.btndoit.grid(row="0", column="1",padx= (2,2), sticky='ne')
-        self.btndoit.configure(width="5")
+        self.btndoit.configure(width="5", height =5)
 
         self.textout = Text(self.footer_LabelFrame, width = 82 , height =12)
         self.textout.grid(row="0", column="0",padx= (1,0), pady = 1)
+
+        self.btnAbout = Button(self.footer_LabelFrame, text="About", command=self.BtnAbout)
+        self.btnQuit = Button(self.footer_LabelFrame, text="Quit", command=self.BtnQuit)
+
+        self.btnAbout.grid(row="0", column="1",padx= (2,2), pady=15, sticky='e')
+        self.btnQuit.grid(row="0", column="1",padx= (2,2), sticky='se')
+
+        self.btnAbout.configure(width="5")
+        self.btnQuit.configure(width="5")
+
 
     def BtnAbout(self):
         pr_about = subprocess.Popen([ 'python3', 'about.py' ])

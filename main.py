@@ -239,13 +239,14 @@ class vougen:
 
         limit_time = plt+"d"
         userdic = {}
+        self.textout.delete('1.0', END)
         for i in range(idnu):
             user = prefix+str(i)
             #passwd = (self.password_generator(size))
             passwd = ''.join(random.choice(chars) for i in range(size))
             userdic.update({user : passwd})
             roucomm = ("add limit-uptime="+limit_time+" name="+user+" password="+passwd+" server="+hotnam)
-            print(roucomm)
+            #print(roucomm)
             s = '{}\n'.format(roucomm)
             self.textout.insert(END, s)
             self.textout.see(END)

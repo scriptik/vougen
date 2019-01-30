@@ -157,7 +157,7 @@ class vougen:
         #self.btnQuit.configure(width="5")
 
     def BtnAbout(self):
-        pr_batch_set_password = subprocess.Popen([ 'python3', 'about.py' ])
+        pr_about = subprocess.Popen([ 'python3', 'about.py' ])
 
     def Btndoit(self):
         in01 = self.wtfi.get()
@@ -174,6 +174,9 @@ class vougen:
         in12 = self.entrouip.get()
         #vou_gen(wtofi = in01, idnu = in03, prefix = in04, size = in05, dnsname = in06, plt = in07, hotnam = in08)
         vou_gen(in01,in02,in03,in04,in05,in06,in07,in08,in09,in10,in11,in12)
+        if in01 == 1:
+           print("user.rsc file created!")
+           pr_csv = subprocess.Popen([ 'python3', 'rsc2csv.py' ])
 
     def active_in(self):
         if self.wtru.get() == 1:

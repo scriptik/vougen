@@ -156,19 +156,10 @@ class vougen:
         self.entroupo.configure(width="5", state='disabled')
 
         # Widget footer Frame
-        #self.labelfooter = ttk.Label(self.footer_LabelFrame, text="Mikrotik Hotspot User & Voucher")
-        #self.labelfooter.grid(row= 0 , column= 0 , sticky='w', padx= (2,210), pady= 5)
 
         self.btndoit = Button(self.footer_LabelFrame, text="Do it", command=self.Btndoit)
-        #self.btnQuit = Button(self.header_LabelFrame, text="Quit", command=self.BtnQuit)
-
-        #self.btndoit.grid(row="0", column="0",padx= (95,2), pady= 5, sticky='e')
-        #self.btndoit.grid(row="0", column="0",padx= (2,190), sticky='e')
         self.btndoit.grid(row="0", column="1",padx= (2,2), sticky='ne')
-        #self.btnQuit.grid(row="0", column="2",padx= 2, pady= 5, sticky='ew')
-
         self.btndoit.configure(width="5")
-        #self.btnQuit.configure(width="5")
 
         self.textout = Text(self.footer_LabelFrame, width = 82 , height =12)
         self.textout.grid(row="0", column="0",padx= (1,0), pady = 1)

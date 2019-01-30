@@ -20,7 +20,7 @@ select Write on router checkbox.
 # Connecting to Router
 Before connecting, api-ssl service on routeros must have a valid certificate set. For more information on 
 how to generate such certificates see :
-![MikroTik wiki](https://wiki.mikrotik.com/wiki/Manual:Create_Certificates)
+[MikroTik wiki](https://wiki.mikrotik.com/wiki/Manual:Create_Certificates)
 
 # Built with
 ![librouteros](https://github.com/luqasz/librouteros)  Python implementation of MikroTik RouterOS API

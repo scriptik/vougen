@@ -19,8 +19,9 @@ import string
 import random
 import qrcode
 import os
-from librouteros import connect
-import ssl
+#from librouteros import connect
+#import ssl
+from routeros_api import Api
 import time
 import getpass
 
@@ -235,11 +236,6 @@ class vougen:
 
         if wtoru == 1:
                 print("Connecting to Router...")
-                ctx = ssl.create_default_context()
-                ctx.check_hostname = False
-                ctx.verify_mode = ssl.CERT_NONE
-                #api = connect(username='lab', password='1234', host='192.168.25.244', ssl_wrapper=ctx.wrap_socket, port=8729)
-                api = connect(username=ru_us, password=ru_pa, host=ru_ip, ssl_wrapper=ctx.wrap_socket, port=ru_po)
 
         limit_time = plt+"d"
         userdic = {}
@@ -249,7 +245,6 @@ class vougen:
             passwd = ''.join(random.choice(chars) for i in range(size))
             userdic.update({user : passwd})
             roucomm = ("add limit-uptime="+limit_time+" name="+user+" password="+passwd+" server="+hotnam)
-            #print(roucomm)
             s = '{}\n'.format(roucomm)
             self.textout.insert(END, s)
             self.textout.see(END)
@@ -257,8 +252,11 @@ class vougen:
                 with open(filename, 'a') as file_object:
                     file_object.write(roucomm+"\n")
             if wtoru == 1:
-                parms = {'limit-uptime': limit_time, 'name': user, 'password': passwd, 'server': 'hotspot1'}
-                api(cmd='/ip/hotspot/user/add', **parms)
+                router = Api(ru_ip, user=ru_us, password=ru_pa, port=int(ru_po))
+                message = [('/ip/hotspot/user/add', '=name=' + user, '=password=' + passwd, '=server=' + hotnam, \
+                          '=limit-uptime=' + limit_time)]
+                r = router.talk(message)
+                print(r)
 
 
             qr.clear()

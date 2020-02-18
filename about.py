@@ -36,7 +36,7 @@ SOFTWARE."""
 def BtnClose():
     root.quit()
 
-l = Label(mainWindow, text="Developed by: Pezhman Shafigh\nhttps://github.com/scriptik/vougen\nVersion: 1.0\nLicence: {}\n".format(LICENCE))
+l = Label(mainWindow, text="Developed by: Pezhman Shafigh\nhttps://github.com/scriptik/vougen\nVersion: 2.0\nLicence: {}\n".format(LICENCE))
 l.grid(row="0", column="0", sticky=E+W+N+S)
 
 btnClose = Button(mainWindow, command=BtnClose, text="Close")

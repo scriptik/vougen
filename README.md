@@ -18,12 +18,14 @@ select Write on router checkbox.
 ![screenshot01](screenshot01.png)
 
 # Connecting to Router
-Before connecting, api-ssl service on routeros must have a valid certificate set. For more information on 
+For api-ssl connection , Before connecting, api-ssl service on routeros must have a valid certificate set. For more information on 
 how to generate such certificates see :
 [MikroTik wiki](https://wiki.mikrotik.com/wiki/Manual:Create_Certificates)
+# ToDo-List
+- [ ] Add api-ssl connection button and active it for new API
 
 # Built with
-![librouteros](https://github.com/luqasz/librouteros)  Python implementation of MikroTik RouterOS API
+![RouterOS_API](https://github.com/LaiArturs/RouterOS_API)  Python API client for RouterOS that is easy to use and modify. 
 
 ![python-qrcode](https://github.com/lincolnloop/python-qrcode)  Pure python QR Code generator
 

@@ -31,7 +31,7 @@ class vougen:
     def __init__(self, master):
 
         self.master = master
-        master.title("VOUGEN V1.2")
+        master.title("VOUGEN V2.0")
         master.geometry('660x450+250+100')
 
         #### Initialize Label Frames ####
@@ -146,7 +146,7 @@ class vougen:
         self.labelroupo.grid(row= 5 , column= 0 , sticky='w', padx= 2, pady= 2)
 
         self.entroupo = ttk.Entry(self.action_LabelFrame)
-        self.entroupo.insert(END, '8729')
+        self.entroupo.insert(END, '8728')
         self.entroupo.grid(row= 5 , column= 1 , sticky='e', padx= 2, pady= 2)
         self.entroupo.configure(width="5", state='disabled')
 
